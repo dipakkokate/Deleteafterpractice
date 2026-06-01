@@ -1,12 +1,24 @@
 services:
-  tomcatwebserver:
+  tomcat:
     build: .
+    container_name: studentapp
     ports:
       - "8080:8080"
-    container_name: tomcatwebserver
+    depends_on:
+      - db
 
-  tomcatwebserveremp:
-    build: .
+  db:
+    image: mysql:5.7
+    container_name: studentdb
     ports:
-      - "81:8080"
-    container_name: tomcatwebserveremp
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: studentapp
+      MYSQL_USER: student
+      MYSQL_PASSWORD: student@1
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:

@@ -1,20 +1,12 @@
-version: '3.8'
-
 services:
   tomcatwebserver:
     build: .
     ports:
       - "8080:8080"
     container_name: tomcatwebserver
-    volumes:
-      - ./webapps:/usr/local/tomcat/webapps
-    restart: always
 
   tomcatwebserveremp:
-    build: ./emp
+    build: .
     ports:
       - "81:8080"
     container_name: tomcatwebserveremp
-    volumes:
-      - ./emp/webapps:/usr/local/tomcat/webapps
-    restart: always

@@ -1,15 +1,15 @@
 
 provider "aws" {
-  region = "us-west-2"
+  region = "us-east-1"
   //access_key = ""
   //secret_key = ""
   profile = "configs"
 }
 resource "aws_instance" "this_aws_instance" {
   //for_each = toset(var.imageid)
-  ami                    = "ami-04158184f60ea8b5e"
-  vpc_security_group_ids = ["sg-0243699f25e16090b"]
-  key_name               = "tf"
+  ami                    = "ami-0b6d9d3d33ba97d99"
+  vpc_security_group_ids = ["sg-02bbe1725fe52a088"]
+  key_name               = "nv.key"
   instance_type          = "t2.micro"
   provisioner "file" {
     source      = "hello.txt"
